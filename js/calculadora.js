@@ -1,4 +1,3 @@
-import "./operacoes"
 
 var valor1;
 var valor2;
@@ -57,31 +56,52 @@ $(document).ready(function(){
         event.preventDefault();
         valor1 = parseInt($('#result').val())
         operacao = 'dividir';
+        console.log(valor1, operacao);
         zerar();
     });
-    $('#subtratir').click(function(event){
+    $('#subtrair').click(function(event){
         event.preventDefault();
         valor1 = parseInt($('#result').val())
         operacao = 'subtrair';
+        console.log(valor1, operacao);
         zerar();
     });
     $('#multiplicar').click(function(event){
         event.preventDefault();
         valor1 = parseInt($('#result').val())
         operacao = 'multiplicar';
+        console.log(valor1, operacao);
         zerar();
     });
     $('#somar').click(function(event){
         event.preventDefault();
         valor1 = parseInt($('#result').val())
         operacao = 'somar';
+        console.log(valor1, operacao);
         zerar();
     });
     $('#igual').click(function(event){
         event.preventDefault();
-        valor2 = parseInt($('#resut').val);
-        
-    })
+        valor2 = parseInt($('#result').val());
+        resultado = calculo(valor1, valor2, operacao);
+        console.log(valor1, operacao, valor2, resultado);
+        $('#result').val(resultado);
+        var sinal = logs(operacao);
+        var log = `<div>${valor1} ${sinal} ${valor2} = ${resultado}<br></div>`;
+        $('span').append(log);
+        console.log(log);
+    });
+    $('#porcentagem').click(function(event){
+        event.preventDefault();
+        valor2 = parseInt($('#result').val());
+        resultado = calculoPecent(valor1, valor2, operacao);
+        console.log(valor1, operacao, valor2, resultado);
+        $('#result').val(resultado);
+        var sinal = logs(operacao);
+        var log = `<div>${valor1} ${sinal} ${valor2}% = ${resultado}<br></div>`;
+        $('span').append(log);
+        console.log(log);
+    });
 
     //Tratamento de valores
     function valor(event, num) {
@@ -92,5 +112,59 @@ $(document).ready(function(){
     function zerar (){
         $('#result').val("");
     }
+    function logs(operacao) {
+        switch (operacao) {
+            case 'somar':
+                return '+';
+                break;
+            case 'subtrair':
+                return '-';
+                break;
+            case 'dividir':
+                return '/';
+                break;
+            case 'multiplicar':
+                return '*';
+                break;
+            default:
+                break;
+        }
+    }
 });
 
+function calculo (valor1, valor2, operacao) {
+    switch (operacao) {
+        case 'somar':
+            return valor1 + valor2;
+            break;
+        case 'subtrair':
+            return valor1 - valor2;
+            break;
+        case 'dividir':
+            return valor1 / valor2;
+            break;
+        case 'multiplicar':
+            return valor1 * valor2;
+            break;
+        default:
+            break;
+    }
+}
+function calculoPecent(valor1, valor2, operacao) {
+    switch (operacao) {
+        case 'somar':
+            return valor1 + (valor1 * (valor2 / 100));
+            break;
+        case 'subtrair':
+            return valor1 - (valor1 * (valor2 / 100));
+            break;
+        case 'dividir':
+            return valor1 / (valor1 * (valor2 / 100));
+            break;
+        case 'multiplicar':
+            return valor1 * (valor1 * (valor2 / 100));
+            break;
+        default:
+            break;
+    }
+}
