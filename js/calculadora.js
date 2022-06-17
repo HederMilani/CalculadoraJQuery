@@ -50,39 +50,39 @@ $(document).ready(function(){
     });
     $('#inverter').click(function(event){
         event.preventDefault();
-        $('#result').val(parseInt($('#result').val()) * (0 - 1));
+        $('#result').val(parseFloat($('#result').val()) * (0 - 1));
     });
     $('#dividir').click(function(event){
         event.preventDefault();
-        valor1 = parseInt($('#result').val())
+        valor1 = parseFloat($('#result').val())
         operacao = 'dividir';
         console.log(valor1, operacao);
         zerar();
     });
     $('#subtrair').click(function(event){
         event.preventDefault();
-        valor1 = parseInt($('#result').val())
+        valor1 = parseFloat($('#result').val())
         operacao = 'subtrair';
         console.log(valor1, operacao);
         zerar();
     });
     $('#multiplicar').click(function(event){
         event.preventDefault();
-        valor1 = parseInt($('#result').val())
+        valor1 = parseFloat($('#result').val())
         operacao = 'multiplicar';
         console.log(valor1, operacao);
         zerar();
     });
     $('#somar').click(function(event){
         event.preventDefault();
-        valor1 = parseInt($('#result').val())
+        valor1 = parseFloat($('#result').val())
         operacao = 'somar';
         console.log(valor1, operacao);
         zerar();
     });
     $('#igual').click(function(event){
         event.preventDefault();
-        valor2 = parseInt($('#result').val());
+        valor2 = parseFloat($('#result').val());
         resultado = calculo(valor1, valor2, operacao);
         console.log(valor1, operacao, valor2, resultado);
         $('#result').val(resultado);
@@ -93,7 +93,7 @@ $(document).ready(function(){
     });
     $('#porcentagem').click(function(event){
         event.preventDefault();
-        valor2 = parseInt($('#result').val());
+        valor2 = parseFloat($('#result').val());
         resultado = calculoPecent(valor1, valor2, operacao);
         console.log(valor1, operacao, valor2, resultado);
         $('#result').val(resultado);
